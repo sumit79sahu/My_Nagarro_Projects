@@ -1,0 +1,19 @@
+
+.private-route-image
+{
+    width: 100%;
+    height: 60vh;
+    object-fit: contain;
+}
+.private-route-login
+{
+    padding: 2rem;
+}
+.private-route-text
+{
+    font-size: 1.5em;
+}
+.private-route-btn
+{
+    width: 20%;
+}

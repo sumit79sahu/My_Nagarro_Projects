@@ -1,0 +1,11 @@
+.Hcard
+{
+    display: flex;
+    gap:30px;
+}
+.cart-product-img
+{
+    width: 20%;
+    height: 150px;
+    object-fit: contain;
+}

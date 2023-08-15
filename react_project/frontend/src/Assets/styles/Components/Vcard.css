@@ -1,0 +1,83 @@
+.Vcard
+{
+    text-decoration:none;
+}
+.Vcard:hover
+{
+    border: none;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.product-img
+{
+    height: 150px;
+    object-fit: contain;
+    margin: 1rem 0;
+
+}
+.product-rating
+{
+    display: flex;
+    gap:10px;
+    margin-left: 4px;
+}
+.product-rate
+{
+    padding-top:.1rem ;
+    padding-left: .15rem;
+    width: 15%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: .8em;
+    font-weight: 600;
+    background-color: green;
+    color: white;
+    border-radius: 4px;
+}
+.product-rate-count
+{
+    color: slategray;
+    font-size: .9em;
+    font-weight: 400;
+}
+.product-price-details
+{
+    margin: .5rem 0;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+
+}
+.product-new-price
+{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: 500;
+    font-size: 1.1em;
+}
+.product-actual-price
+{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: slategray;
+    font-size: .9em;
+    font-weight: 400;
+    text-decoration: line-through;
+}
+.product-discount
+{
+    color: green;
+    font-size: .9em;
+    font-weight: 500;
+}
+.product-title
+{
+    padding-left: 4px;
+}
+.product-delivery
+{
+    padding-left: 4px;
+}

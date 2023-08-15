@@ -1,0 +1,30 @@
+.offer-card-container
+{
+    width:48%;
+    border-radius: 15px;
+    display: flex;
+    align-items: center;
+    padding:0 0 0 20px;
+    box-shadow: rgba(58, 58, 58, 0.2) 0px 2px 8px 0px;
+    margin: .5rem 0 .5rem 0 ;
+    gap: 15px;
+}
+.offer-card-container img
+{
+
+    width:50%;
+    max-height: 200px;
+    border-top-right-radius: 15px;
+    border-bottom-right-radius: 15px;
+    object-fit: cover;
+
+}
+
+.offer-card-container .offers
+{
+    padding-top: 12px;
+    display: flex;
+    flex-direction: column;
+    align-items:flex-start;
+}
+

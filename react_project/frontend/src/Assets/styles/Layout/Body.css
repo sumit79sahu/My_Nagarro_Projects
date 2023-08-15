@@ -1,0 +1,148 @@
+.main-container
+{
+    padding: 80px 100px;
+}
+
+.home-offers h4
+{
+    font-weight: 600;
+    margin: 0;
+}
+.offers-cards
+{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+}
+
+.navigation-btn
+{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    width: 35px;
+    height: 35px;
+    border-radius: 50px;
+    background-color: #fff;
+    outline: none;
+    border: none;
+    box-shadow: rgba(58, 58, 58, 0.2) 0px 2px 8px 0px;
+}
+.p-btn
+{
+   
+    left: 82px;
+}
+.n-btn
+{
+    right: 82px;
+}
+
+.product-categories
+{
+    padding: 30px 0;
+}
+.product-categories h4
+{
+    font-weight: 600;
+    margin: 0;
+}
+.product-container
+{
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 20px;
+    justify-content: center;
+    align-items: center;
+}
+
+.product-banners-ratedproduct
+{
+    display: flex;
+    justify-content: space-between;
+}
+.rated-products
+{
+    width: 38.7%;
+}
+.rated-products h4
+{
+    font-weight: 600;
+    margin: 0;
+}
+.rated-products-container
+{
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    column-gap: 15px;
+}
+.product-banner2
+{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    width: 59.5%;
+    padding:20px ;
+    text-align: center;
+    height: 520px;
+    background-image: linear-gradient(rgba(255, 254, 254, 0),rgba(41, 41, 41, 0.833)),url(../../Images/Camera.jpg);
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+
+.product-banner2 h1
+{
+   
+    font-weight: 600;
+    color: #fff;
+}
+.product-banner2 h4
+{
+   
+    font-weight: 600;
+    color:#fff;
+}
+
+.product-banner2 a
+{
+    text-decoration: none;
+    color:#fff;
+}
+.page-count
+{
+    padding-top: 5px;
+    display: flex;
+    gap: 5px;
+    justify-content: center;
+    /* align-items: center; */
+}
+.pagination
+{
+   
+    width: 8px;
+    height: 8px;
+    border-radius: 100px;
+    background-color: #868686;
+}
+
+
+@media (max-width:560px)
+{
+    .main-container {
+        padding-left: 5rem;
+        padding-right: 5rem;
+    }
+}
+
+@media (max-width:490px)
+{
+    .main-container {
+        padding-left: 3rem;
+        padding-right: 3rem;
+    }
+}

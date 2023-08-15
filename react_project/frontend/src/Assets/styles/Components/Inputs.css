@@ -1,0 +1,37 @@
+.input-box
+{
+    padding: .5rem;
+    font-size: 1.2em;
+    border: none;
+    border-bottom: 1.5px solid green;
+}
+.input-box:focus
+{
+    background-color:rgb(247, 245, 245);
+    outline: none;
+}
+.input-container
+{
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    height: 12vh;
+}
+
+.input-error
+{
+    font-size: .8em;
+    color: red;
+}
+
+.edit-inpt
+{
+    padding: .5rem;
+    font-size: 1.2em;
+    height: 8vh;
+}
+.edit-inpt:focus
+{
+    outline: none;
+    border: 1px solid blue;
+}

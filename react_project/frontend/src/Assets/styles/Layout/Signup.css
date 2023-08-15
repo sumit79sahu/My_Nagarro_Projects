@@ -1,0 +1,46 @@
+.modal-content {
+  border-radius: 0 !important;
+}
+
+.signup-container {
+  width: 100%;
+  display: flex;
+  padding: 0;
+}
+
+.signup-form {
+
+  padding: 2rem;
+  width: 50%;
+}
+
+.signup-img {
+  
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  background-color: #657DA1;
+  width: 50%;
+}
+.signup-img div
+{
+  text-align: start;
+  padding: 1rem;
+  margin: auto 1rem;
+}
+.signup-img h2
+{
+  font-weight: 600;
+  color: #fff;
+}
+
+.signup-img span
+{
+  color: #fff;
+  font-size: 1em;
+  font-weight: 400;
+}
+
+.signup-btn {
+  width: 100%;
+}
