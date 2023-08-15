@@ -1,0 +1,34 @@
+﻿@model List<BookEventModel>
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Events Invited to</h1>
+<hr />
+
+<table class="table  table-hover">
+    <thead class="table-secondary head">
+        <tr>
+            <th class="c1">
+                Events
+            </th>
+        </tr>
+    </thead>
+
+    @{
+        foreach (var item in Model)
+        {
+            <tbody>
+
+                <tr class="c1">
+                    <td>
+                        <a asp-controller="BookEvent" asp-action="Details" asp-route-id=@item.Title>@item.Title</a>
+                    </td>
+
+            </tbody>
+
+        }
+    }
+</table>
+
+

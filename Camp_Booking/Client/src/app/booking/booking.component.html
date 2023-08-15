@@ -1,0 +1,178 @@
+<div class="main">
+  <h2>Booking Screen</h2>
+  <div class="book-body shadow p-3 mb-5 bg-body rounded" *ngFor="let item of camps">
+    <div class="booking-img">
+
+      <img src={{item.camp_img}} class="camp-img" alt="">
+
+      <div class="max-person">
+        <h4><i>Max person: {{item.capacity}}</i> </h4>
+      </div>
+    </div>
+    <div class="booking-details">
+      <div class="back-btn">
+        <a routerLink="/">Back to dashboard</a>
+      </div>
+      <div class="details">
+        <p class="camp-description">{{item.description}}</p>
+        <p class="camp-price"><strong>INR {{item.camp_price}}</strong> per night for weekdays</p>
+        <p class="camp-price1"><strong>INR {{item.camp_price}} +500</strong> per night for weekend</p>
+        <form [formGroup]="billingForm" (ngSubmit)="onSubmit(template)">
+          <div>
+            <div>
+              <h5>Total Stay:{{Stay}} Night</h5>
+            </div>
+            <div>
+              <h5>Total Amount:{{amount}} INR</h5>
+            </div>
+            <div class="billing-form">
+              <div class="child1">
+                <div class="input-box">
+                  <label for="exampleFormControlInput1" class="form-label lbl">Billing address</label>
+                  <input type="text" class="form-control ip" id="exampleFormControlInput1"
+                    formControlName="billing_Address">
+                  <span
+                    *ngIf="validateBillingAddress && (validateBillingAddress.invalid && validateBillingAddress.touched)"
+                    class="error-block">
+                    Invalid Billing address
+                  </span>
+                  <span
+                    *ngIf="validateBillingAddress && (submit && validateBillingAddress.invalid && validateBillingAddress.untouched)"
+                    class="error-block">
+                    this field required
+                  </span>
+                </div>
+
+                <div class="input-box">
+                  <label for="exampleFormControlInput1" class="form-label lbl">State</label>
+                  <input type="State" class="form-control ipt" id="exampleFormControlInput1" formControlName="state">
+                  <span *ngIf="validateState && (validateState.invalid && validateState.touched)" class="error-block">
+                    Invalid State name
+                  </span>
+                  <span *ngIf="validateState && (submit && validateState.invalid && validateState.untouched)"
+                    class="error-block">
+                    this field required
+                  </span>
+                </div>
+
+                <div class="input-box">
+                  <label for="exampleFormControlInput1" class="form-label lbl">Country</label>
+                  <input type="Country" class="form-control ipt" id="exampleFormControlInput1"
+                    formControlName="country">
+                  <span *ngIf="validateCountry && (validateCountry.invalid && validateCountry.touched)"
+                    class="error-block">
+                    Invalid Country name
+                  </span>
+                  <span *ngIf="validateCountry && (submit && validateCountry.invalid && validateCountry.untouched)"
+                    class="error-block">
+                    this field required
+                  </span>
+                </div>
+              </div>
+              <div class="child2">
+                <div class="input-box">
+                  <label for="exampleFormControlInput1" class="form-label lbl">ZipCode</label>
+                  <input type="number" class="form-control ipt" id="exampleFormControlInput1" formControlName="zipcode">
+                  <span *ngIf="validateZipcode && (validateZipcode.invalid && validateZipcode.touched)"
+                    class="error-block">
+                    Invalid ZipCode
+                  </span>
+                  <span *ngIf="validateZipcode && (submit && validateZipcode.invalid && validateZipcode.untouched)"
+                    class="error-block">
+                    this field required
+                  </span>
+                </div>
+
+                <div class="input-box">
+
+                  <label for="exampleFormControlInput1 " class="form-label lbl">Cell Phone</label>
+                  <input type="text" class="form-control ipt" id="exampleFormControlInput1"
+                    formControlName="cellphone">
+                  <span *ngIf="validateCellphone && (validateCellphone.invalid && validateCellphone.touched)"
+                    class="error-block">
+                    Invalid cell phone no
+                  </span>
+                  <span
+                    *ngIf="validateCellphone && (submit && validateCellphone.invalid && validateCellphone.untouched)"
+                    class="error-block">
+                    this field required
+                  </span>
+                </div>
+
+                <div class="input-box1">
+                  <button type="submit" class="  btn btn1 btn-primary ipt">Confirm Booking</button>
+                </div>
+
+
+              </div>
+            </div>
+          </div>
+        </form>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</div>
+
+
+<ng-template #template>
+  <div class="modal-header">
+    <h4 class="modal-title pull-left">Confirm Booking</h4>
+  </div>
+  <div class="modal-body">
+
+    <table>
+      <tbody>
+        <tr>
+          <td ><h6>Reference No:</h6></td>
+          <td><h6 class="bill-details">{{billingForm.value.booking_Id}}</h6></td>
+        </tr>
+        <tr>
+          <td><h6>Billing Address:</h6></td>
+
+          <td><h6 class="bill-details">{{billingForm.value.billing_Address}}</h6></td>
+        </tr>
+        <tr>
+          <td><h6>State:</h6></td>
+          <td><h6 class="bill-details">{{billingForm.value.state}}</h6></td>
+        </tr>
+        <tr>
+          <td><h6>ZipCode:</h6></td>
+          <td><h6 class="bill-details">{{billingForm.value.zipcode}}</h6></td>
+        </tr>
+        <tr>
+          <td> <h6>Cell Phone:</h6></td>
+          <td><h6 class="bill-details">{{billingForm.value.cellphone}}</h6></td>
+        </tr>
+        <tr>
+          <td> <h6>Total WeekDay Amount:</h6></td>
+          <td><h6 class="bill-details">{{weekD}}</h6></td>
+        </tr>
+        <tr>
+          <td> <h6>Total WeekEnd Amount:</h6></td>
+          <td><h6 class="bill-details">{{weekE}}</h6></td>
+        </tr>
+        <tr>
+          <td> <h6>Total Amount:</h6></td>
+          <td><h6 class="bill-details">{{billingForm.value.total_Amount}}</h6></td>
+        </tr>
+        <tr>
+          <td><h6>Total Stay:</h6></td>
+          <td><h6 class="bill-details">{{billingForm.value.total_Stay}}</h6></td>
+        </tr>
+
+        <tr>
+          <td><input type="text" #coupon class="form-control ipt" placeholder="apply coupon"></td>
+          <td><a class="apply" (click)="applyCoupon(coupon.value)">apply</a></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="bill-btn">
+    <button type="button" class="btn btn-primary btn1"(click)="confirmBill()" >Confirm</button>
+    <button type="button" class="btn btn-danger btn1" (click)="modalRef?.hide()">Cancel</button>
+  </div>
+</ng-template>

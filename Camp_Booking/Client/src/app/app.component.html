@@ -1,0 +1,169 @@
+<div class="main">
+  <div class="header">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+      <div class="container-fluid">
+        <span class="navbar-brand">Camp Booking</span>
+        <button class="navbar-toggler d-lg-none" type="button" (click)="isCollapsed = !isCollapsed" [attr.aria-expanded]="!isCollapsed" aria-controls="navbarsExampleDefault" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbar Text" [ngbCollapse]="isCollapsed">
+          <div class="navbar-nav">
+            <a class="nav-link manage active" aria-current="page" c (click)="openModal(template)">Manage Booking</a>       
+          </div>
+          <ng-template [ngIf]="adminLoggedIn()===null">
+            <div class="navbar-nav ">
+              <a class="nav-link active" aria-current="page" routerLink="admin/login">Admin Login</a>
+            </div>
+      
+          </ng-template>
+          <ng-template [ngIf]="adminLoggedIn()!==null">
+            <div class="navbar-nav">
+              <a class="nav-link active" aria-current="page" routerLink="admin/managecamps">Manage Camps</a>   
+              <a class="nav-link active" aria-current="page" (click)="adminLogout()" routerLink="" >Logout</a>         
+            </div> 
+          </ng-template>
+        </div>
+
+      </div>
+    </nav>
+  </div>
+
+  <div class="body">
+    <router-outlet></router-outlet>
+  </div>
+</div>
+
+<!----------------------------------Manage Booking----------------------------------------------->
+<ng-template #template>
+  <div class="modal-header">
+    <h4 class="modal-title pull-left">Manage Booking</h4>
+  </div>
+
+  <form [formGroup]="bookingForm" (ngSubmit)="onEnter(template1)">
+  <div class="modal-body">
+   
+      <div class="mb-3">
+        <label for="exampleFormControlInput1" class="form-label">Enter Booking Reference No</label>
+        <input type="text" class="form-control" id="exampleFormControlInput" formControlName="booking_Id">
+        <span *ngIf="validateBillId && (validateBillId.invalid && validateBillId.touched)" class="error-block">
+          Please select valid reference no
+        </span>
+        <span *ngIf="validateBillId && (validateBillId.invalid && enter && validateBillId.untouched)" class="error-block">
+          this field required
+        </span>
+      </div>
+  </div>
+  <div class="manage-btn">
+    <button type="submit" class="btn btn-primary">Enter</button>
+    <button type="button" class="btn btn-danger" (click)="close()">Close</button>
+  </div>
+</form>
+</ng-template>
+
+
+<!-------------------------------------------- Bill Receipt----------------------------------------->
+
+<ng-template #template1>
+  <div class="modal-header">
+    <h4 class="modal-title pull-left">Your Booking</h4>
+  </div>
+  <div class="modal-body">
+    <ng-template [ngIf]="bills==null">
+      <h5 class="invalid">
+        Invalid Reference No
+      </h5>
+      <div class="bill-btn">
+         <button type="button" class="btn btn-danger" (click)="modalRef1?.hide()">Close</button>
+      </div>
+    </ng-template>
+    <ng-template [ngIf]="bills!==null">
+      <table>
+        <tbody >
+          <tr>
+            <td ><h6>Reference No:</h6></td>
+            <td><h6 class="bill-details">{{bills.booking_Id}}</h6></td>
+          </tr>
+          <tr>
+            <td ><h6>Camp Name:</h6></td>
+            <td><h6 class="bill-details">{{camps.camp_name}}</h6></td>
+          </tr>
+          <tr>
+            <td ><h6>Booking Date:</h6></td>
+            <td><h6 class="bill-details">{{ convertDate(camps.camp_avaliable_date)}}</h6></td>
+          </tr>
+          <tr>
+            <td><h6>Billing Address:</h6></td>
+  
+            <td><h6 class="bill-details">{{bills.billing_Address}}</h6></td>
+          </tr>
+          <tr>
+            <td><h6>State:</h6></td>
+            <td><h6 class="bill-details">{{bills.state}}</h6></td>
+          </tr>
+          <tr>
+            <td><h6>ZipCode:</h6></td>
+            <td><h6 class="bill-details">{{bills.zipcode}}</h6></td>
+          </tr>
+          <tr>
+            <td> <h6>Cell Phone:</h6></td>
+            <td><h6 class="bill-details">{{bills.cellphone}}</h6></td>
+          </tr>
+          <tr>
+            <td> <h6>Total Amount:</h6></td>
+            <td><h6 class="bill-details">{{bills.total_Amount}}</h6></td>
+          </tr>
+          <tr>
+            <td><h6>Total Stay:</h6></td>
+            <td><h6 class="bill-details">{{bills.total_Stay}}</h6></td>
+          </tr>
+        </tbody>
+      </table>
+      <div class="bill-btn">
+        <ng-template [ngIf]="past===false">
+          <button type="button" class="btn btn-primary" (click)="cancelBooking()" >Cancel Booking</button>
+          <button type="button" class="btn btn-danger" (click)="modalRef1?.hide()">Close</button>
+        </ng-template>
+
+        <ng-template [ngIf]="past===true">
+          <button type="button" class="btn btn-primary" (click)="openModal2(template2)" >Share Feedback</button>
+          <button type="button" class="btn btn-danger" (click)="close1()">Close</button>
+        </ng-template>
+
+      </div>
+    </ng-template>
+  </div>
+</ng-template>
+
+
+
+
+<!------------------------------------------- feedback--------------------------------------->
+
+<ng-template #template2>
+  <div class="modal-header">
+    <h4 class="modal-title pull-left">Share your feedback</h4>
+  </div>
+  <div class="modal-body">     
+    <div>
+      <b><i>Rate:</i> {{rating}}</b>
+      <rating [max]="5" [(ngModel)]="rating" [customTemplate]="tt"></rating> 
+      <button type="button" class="btn btn-sm btn-danger" (click)="rating = 0">Clear
+      </button>
+      <ng-template #tt let-i="index" let-v="value">
+        <button class="btn btn-{{i < v ? 'warning' : 'default'}}">
+          {{i < v ? '&#9733;' : '&#9734;'}}
+        </button>
+      </ng-template>
+    </div>
+  </div>
+  <div class="bill-btn">
+    <button type="button" class="btn btn-primary" (click)="sendFeedback()" >Share Feedback</button>
+    <button type="button" class="btn btn-danger" (click)="close2()">Close</button>
+  </div>
+</ng-template>
+
+<lib-ng-toast><lib-ng-toast>
+
+
+
+

@@ -1,0 +1,49 @@
+.blog
+{
+    height: 91vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+.blog-cntr
+{
+    height: 75vh;
+    border: 1px solid silver;
+    border-radius: 10px;
+    width: 90%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    background-color: rgb(226, 230, 238);
+}
+.blog-btn
+{
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+    padding: .5rem;
+    gap: 1rem;
+}
+.read-blog
+{
+    width: 70%;
+    height: 65.7vh;
+    /* border: 1px solid red; */
+    overflow: auto;
+}
+.edit-form
+{
+    width: 98%;
+    height: 57vh;
+}
+.edit-title
+{
+    margin: 0;
+}
+.edit-category
+{
+    color: rgb(153, 151, 151);
+    /* overflow:scroll; */
+}

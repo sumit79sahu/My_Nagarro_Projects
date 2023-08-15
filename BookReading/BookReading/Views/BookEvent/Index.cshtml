@@ -1,0 +1,39 @@
+﻿@model IEnumerable<BookReading.Models.BookEventModel>
+@inject Microsoft.AspNetCore.Identity.SignInManager<ApplicationUser> _signInManager
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>My Events</h1>
+
+
+<table class="table">
+    <thead >
+        <tr>
+            <th class="c2">
+                Events Created by you
+            </th>
+            <th class="c2"></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            if (User.FindFirst("UserEmail").Value == item.Email)
+            {
+               <tr class="c2">
+                  <td>
+                          <a asp-controller="BookEvent" asp-action="Details" asp-route-id=@item.Title>@item.Title</a>
+                   </td>
+
+                   <td>
+                       <a  asp-action="Edit" asp-route-id="@item.Title">Edit</a> |
+                         <a asp-action="Delete" asp-route-id="@item.Title">Delete</a>
+                    </td>
+                </tr>
+
+            }
+        }
+    </tbody>
+</table>

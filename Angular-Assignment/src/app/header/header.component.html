@@ -1,0 +1,39 @@
+<ng-template  [ngIf]="loggedin()===null">
+  <nav class="navbar navbar-dark bg-dark header">
+    <div class="container-fluid title ">
+      <span class="navbar-brand mb-0 h12">
+        <h3>
+          {{title}}
+        </h3>
+      </span>
+    </div>
+  </nav>
+
+</ng-template>
+
+<ng-template  [ngIf]="loggedin()!==null">
+  <nav class="navbar  navbar-dark bg-dark header">
+    <div class="container-fluid login-header">
+      <span class="navbar-brand mb-0 h12 login-title">
+        <h3>
+          {{title}}
+        </h3>
+      </span>
+      <div class="btn-group drop" dropdown>
+        <button id="button-basic" dropdownToggle type="button" class="btn btn-dark dropdown-toggle"
+                aria-controls="dropdown-basic">
+          {{loggedin()}} <span class="caret"></span>
+        </button>
+        <ul id="dropdown-basic" *dropdownMenu class="dropdown-menu"
+            role="menu" aria-labelledby="button-basic">
+          <li role="menuitem"><a class="dropdown-item" (click)="onLogout()">Logout</a></li>
+
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+</ng-template>
+
+
+

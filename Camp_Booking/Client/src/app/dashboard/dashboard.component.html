@@ -1,0 +1,83 @@
+<div class="main">
+  <!-- -----------------------------------------------------search---------------------------------- -->
+    <div class="search">
+        <div class="search-form">
+            <h2 class="text-center">Search</h2>
+            <form  [formGroup]="searchForm" (ngSubmit)="onSearch()">
+                <div class="mb-3 row input-div">
+                    <label for="inputPassword" class="col-sm-2 col-form-label input-label">CheckIn</label>
+                    <div class="col-sm-10">
+                      <input type="date" class="form-control input-box" formControlName="CheckIn">
+                      <span *ngIf="validateCheckIn && (validateCheckIn.invalid && validateCheckIn.touched)" class="error-block">
+                        Please enter a valid Date
+                      </span>
+                      <span *ngIf="validateCheckIn && ( validateCheckIn.invalid && search && validateCheckIn.untouched)" class="error-block">
+                        this field required
+                      </span>
+                    </div>
+                </div>       
+                <div class="mb-3 row input-div">
+                    <label for="inputPassword" class="col-sm-2 col-form-label input-label">CheckOut</label>
+                    <div class="col-sm-10">
+                      <input type="date" class="form-control input-box" formControlName="CheckOut"  >
+                      <span *ngIf="validateCheckOut && (validateCheckOut.invalid && validateCheckOut.touched)" class="error-block">
+                        Please enter a valid Date
+                      </span>
+                      <span *ngIf="validateCheckOut && (validateCheckOut.invalid && search && validateCheckOut.untouched)" class="error-block">
+                        this field required
+                      </span>
+                    </div>
+                </div> 
+
+                <div class="mb-3 row input-div">
+                    <label for="inputPassword" class="col-sm-2 col-form-label input-label">Capacity</label>
+                    <div class="col-sm-10">
+                        <select class="form-select input-box" aria-label="Default select example" formControlName="cpty">
+                            <option value="0">----Any----</option>
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="4">4</option>
+                            <option value="8">8</option>
+                          </select>
+                          <span *ngIf="validateCpty && (validateCpty.invalid && validateCpty.touched)" class="error-block">
+                            Please select Valid capacity
+                          </span>
+                          <span *ngIf="validateCpty && (validateCpty.invalid && search && validateCpty.untouched)" class="error-block">
+                            this field required
+                          </span>
+                    </div>
+                </div> 
+
+                  <div class=" input-div-button">
+                      <button class="btn btn-success">Search</button>       
+                  </div>
+            </form>
+        </div>
+    </div>
+
+    <!------------------------------ Camp----------------------- -->
+    <div class="campList">
+            <div class="list" *ngFor="let item of camps  | paginate:{itemsPerPage:4,currentPage:page,totalItems:totalCamps} ">
+     
+
+                
+              <img src={{item.camp_img}} alt="" class="img-fluid camp-img">
+          
+              <div class="camp-details">
+                
+                  <h4 class="camp-title camp-head">{{item.camp_name}} </h4>
+                  <p  class="camp-date">{{convertDate(item.camp_avaliable_date)}}</p>
+                <p class="camp-description">{{item.description}}</p>
+                <p> <strong>INR {{item.camp_price}} INR  </strong> per night <a routerLink="booking/{{item.camp_id}}" class="camp-book"> BOOK </a> <i class="camp-person">Max:{{item.capacity}} Person </i> </p>
+  
+              </div>  
+
+              
+            </div>
+        <div class="pagination ">
+            <pagination-controls (pageChange)="page=$event"></pagination-controls>
+        </div>
+    </div>    
+</div>
+
+

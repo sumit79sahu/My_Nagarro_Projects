@@ -1,0 +1,298 @@
+<div class="main">
+  <div class="heading">
+    <h2 class="text-center">Manage Camps</h2>
+  </div>
+  <div class="body">
+
+    <tabset>
+
+      <!-------------------------------------- Create new Camp-------------------------------- -->
+      <tab heading="Add new Camp" id="tab1">
+        <form [formGroup]="campform" (ngSubmit)="onSubmit()">
+          <div class="add">
+
+            <div class="child1 shadow p-3 mb-5 bg-body rounded">
+
+              <div class="camp-img">
+                <img [src]="img" class="img img-fluid" alt="">
+              </div>
+              <div class="uplode-btn">
+                <span *ngIf="validateImage && (submit && validateImage.invalid && validateImage.untouched)"
+                  class="error-block">
+                  this field required
+                </span>
+                <span *ngIf="validateImage && (validateImage.invalid && validateImage.touched)"
+                class="error-block">
+                Please select image
+              </span>
+                <div class="input-group mb-3">
+                  <input type="file" class="form-control" id="inputGroupFile02" (change)="upload($event)"
+                    formControlName="camp_img" accept=".png,.jpg">
+                  <label class="input-group-text" for="inputGroupFile02">Upload Image</label>
+                </div>
+              </div>
+            </div>
+            <div class="child2 shadow p-3 mb-5 bg-body rounded ">
+              <div class="dashboard-btn">
+                <a routerLink="">Back to Dashboard</a>
+              </div>
+              <div class="camp-form">
+
+                <div class=" form ">
+                  <div class="form-child">
+                    <div class="mb-3">
+                      <div class="lbl">
+                        <label for="exampleFormControlInput1" class="form-label">Camp Name</label>
+                        <span *ngIf="validateName && (validateName.invalid && validateName.touched)"
+                          class="error-block">
+                          Invalid Name
+                        </span>
+                        <span *ngIf="validateName && (submit && validateName.invalid && validateName.untouched)"
+                          class="error-block">
+                          this field required
+                        </span>
+                      </div>
+
+                      <input type="text" class="form-control" id="exampleFormControlInput1" formControlName="camp_name">
+
+                    </div>
+                    <div class="mb-3">
+                      <div class="lbl">
+                        <label for="exampleFormControlInput1" class="form-label">Rate per night (INR)</label>
+                        <span *ngIf="validatePrice && (validatePrice.invalid && validatePrice.touched)"
+                          class="error-block">
+                          Invalid Price
+                        </span>
+                        <span *ngIf="validatePrice && (submit && validatePrice.invalid && validatePrice.untouched)"
+                          class="error-block">
+                          this field required
+                        </span>
+                      </div>
+
+                      <input type="number" class="form-control" id="exampleFormControlInput1"
+                        formControlName="camp_price">
+
+                    </div>
+                    <div class="mb-3">
+                      <div class="lbl">
+                        <label for="exampleFormControlInput1" class="form-label">Avaliable Date</label>
+                        <span *ngIf="validateDate && (validateDate.invalid && validateDate.touched)"
+                          class="error-block">
+                          Invalid Date
+                        </span>
+                        <span *ngIf="validateDate && (submit && validateDate.invalid && validateDate.untouched)"
+                          class="error-block">
+                          this field required
+                        </span>
+                      </div>
+
+                      <input type="date" class="form-control" id="exampleFormControlInput1"
+                        formControlName="camp_avaliable_date">
+
+                    </div>
+                  </div>
+                  <div class="form-child">
+                    <div class="mb-3">
+                      <div class="lbl">
+                        <label for="exampleFormControlInput1" class="form-label">Capacity</label>
+                        <span *ngIf="validateCapacity && (validateCapacity.invalid && validateCapacity.touched)"
+                          class="error-block">
+                          Invalid Capacity
+                        </span>
+                        <span
+                          *ngIf="validateCapacity && (submit && validateCapacity.invalid && validateCapacity.untouched)"
+                          class="error-block">
+                          this field required
+                        </span>
+                      </div>
+
+                      <input type="number" class="form-control" id="exampleFormControlInput1"
+                        formControlName="capacity">
+
+                    </div>
+                    <div class="mb-3">
+                      <div class="lbl">
+                        <label for="exampleFormControlTextarea1" class="form-label">Description</label>
+                        <span
+                          *ngIf="validateDescription && (validateDescription.invalid && validateDescription.touched)"
+                          class="error-block">
+                          Invalid Description
+                        </span>
+                        <span
+                          *ngIf="validateDescription && (submit && validateDescription.invalid && validateDescription.untouched)"
+                          class="error-block">
+                          this field required
+                        </span>
+                      </div>
+
+                      <textarea class="form-control" id="exampleFormControlTextarea1" rows="2"
+                        formControlName="description"></textarea>
+
+                    </div>
+                    <div class="mb-3">
+                      <button type="submit" class="btn btn-primary btn1">Add</button>
+                    </div>
+                  </div>
+                </div>
+
+
+              </div>
+
+            </div>
+
+          </div>
+        </form>
+      </tab>
+      <!----------------------------------------------------- Manage Existing camp------------------------------ -->
+      <tab heading="Manage existing camps">
+        <div class="manage ">
+          <div class="manage-body shadow p-3 mb-5 bg-body rounded">
+            <div class="body-child1 ">
+              <a routerLink="">Back to Dashboard</a>
+            </div>
+            <div class=" body-child2">
+              <table class="table table-bordered stable">
+                <thead class="head">
+                  <th>Camp Name</th>
+                  <th> Avaliable Date</th>
+                  <th>Description</th>
+                  <th> Image</th>
+                  <th>Capacity</th>
+                  <th>Rate Per Night (INR)</th>
+                  <th>Action</th>
+                </thead>
+                <tbody>
+
+                  <tr *ngFor=" let camp of camps">
+                    <td>{{camp.camp_name}}</td>
+                    <td>{{convertDate(camp.camp_avaliable_date)}}</td>
+                    <td>{{camp.description}}</td>
+                    <td><img src={{camp.camp_img}} class="img1 img-fluid" alt=""></td>
+                    <td>{{camp.capacity}}</td>
+                    <td>{{camp.camp_price}}</td>
+                    <td>
+                      <button class="btn btn-success btn1" (click)="Onupdate(template,camp)">edit</button>
+                      <button class="btn btn-danger btn2" (click)="OnDelete(camp.camp_id)">delete</button>
+                    </td>
+
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </tab>
+    </tabset>
+  </div>
+
+</div>
+
+
+
+
+
+
+
+<ng-template #template>
+  <div class="modal-header">
+    <h4 class="modal-title pull-left">Edit Camp</h4>
+  </div>
+  <div class="modal-body">
+    <form [formGroup]="campeditform" (ngSubmit)="OnSave()">
+      <div class="edit-form">
+        <div class="list">
+          <div class="mb-3">
+            <div class="lbl">
+              <label for="exampleFormControlInput1" class="form-label">Camp Name</label>
+              <span *ngIf="validateName1 && (validateName1.invalid && validateName1.touched)" class="error-block">
+                Invalid Name
+              </span>
+              <span *ngIf="validateName1 && (submit1 && validateName1.invalid && validateName1.untouched)"
+                class="error-block">
+                this field required
+              </span>
+            </div>
+            <input type="text" class="form-control" id="exampleFormControlInput1" formControlName="camp_name">
+          </div>
+          <div class="mb-3">
+            <div class="lbl">
+              <label for="exampleFormControlInput1" class="form-label">Rate per night (INR)</label>
+              <span *ngIf="validatePrice1 && (validatePrice1.invalid && validatePrice1.touched)" class="error-block">
+                Invalid Price
+              </span>
+              <span *ngIf="validatePrice1 && (submit1 && validatePrice1.invalid && validatePrice1.untouched)"
+                class="error-block">
+                this field required
+              </span>
+            </div>
+
+            <input type="number" class="form-control" id="exampleFormControlInput1" formControlName="camp_price">
+          </div>
+          <div class="mb-3">
+            <div class="lbl">
+              <label for="exampleFormControlInput1" class="form-label">Capacity</label>
+              <span *ngIf="validateCapacity1 && (validateCapacity1.invalid && validateCapacity1.touched)"
+                class="error-block">
+                Invalid Price
+              </span>
+              <span *ngIf="validateCapacity1 && (submit1 && validateCapacity1.invalid && validateCapacity1.untouched)"
+                class="error-block">
+                this field required
+              </span>
+            </div>
+
+            <input type="number" class="form-control" id="exampleFormControlInput1" formControlName="capacity">
+          </div>
+        </div>
+        <div class="list">
+          <div class="mb-3">
+            <div class="lbl">
+              <label for="exampleFormControlInput1" class="form-label">Avaliable Date</label>
+              <span *ngIf="validateDate1 && (validateDate1.invalid && validateDate1.touched)" class="error-block">
+                Invalid Price
+              </span>
+              <span *ngIf="validateDate1 && (submit1 && validateDate1.invalid && validateDate1.untouched)"
+                class="error-block">
+                this field required
+              </span>
+            </div>
+
+            <input type="date" class="form-control" id="exampleFormControlInput1" formControlName="camp_avaliable_date">
+          </div>
+          <div class="mb-3">
+
+            <div class="lbl">
+              <label for="exampleFormControlInput1" class="form-label">Image</label>
+              <span *ngIf="validateImage1 && (submit1 && validateImage1.invalid && validateImage1.untouched)"
+              class="error-block">
+              this field required
+            </span>
+             
+            </div>
+            <input type="file" class="form-control" id="exampleFormControlInput1" accept=".png,.jpg"
+              (change)="upload1($event)">
+          </div>
+
+          <div class="mb-3">
+            <div class="lbl">
+              <label for="exampleFormControlTextarea1" class="form-label">Description</label>
+              <span *ngIf="validateDescription1 && (validateDescription1.invalid && validateDescription1.touched)"
+                class="error-block">
+                Invalid Description
+              </span>
+              <span
+                *ngIf="validateDescription1 && (submit1 && validateDescription1.invalid && validateDescription1.untouched)"
+                class="error-block">
+                this field required
+              </span>
+            </div>
+            <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"
+              formControlName="description"></textarea>
+          </div>
+        </div>
+      </div>
+      <button type="submit" class="btn btn-success btn1">Save</button>
+      <button type="button" class="btn btn-danger btn2" (click)="modalRef?.hide()">Cancel</button>
+    </form>
+  </div>
+</ng-template>

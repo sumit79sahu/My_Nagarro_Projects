@@ -1,0 +1,117 @@
+.example-card {
+    max-width: 400px;
+    margin-bottom: 8px;
+  }
+.main
+{
+    display: flex;
+    justify-content: space-around;
+}
+.search
+{
+    width: 30%;
+    height:79vh ;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    color: rgb(39, 39, 190);
+}
+.campList
+{
+    width: 67%;
+    height: 79vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+.pagination
+{
+    height: 7vh;
+    display: flex;
+    justify-content: center;
+}
+.list{
+    height: 17vh;
+    /* border: 2px solid blue; */
+    font-size:smaller;
+    display: flex;
+    justify-content: space-between;
+    border: 1px solid rgb(176, 174, 174);
+    background-color: white;
+    
+
+}
+.camp-img
+{
+    width: 20%;
+    object-fit: cover;
+    /* border: 1px solid black; */
+}
+.camp-details
+{
+    width: 79%;
+    
+}
+.camp-title,.camp-description
+{
+    margin: 0;
+}
+.camp-book
+{
+    margin-left: .5rem;
+    margin-right: .5rem;
+}
+.camp-person
+{
+    color: rgb(109, 109, 109);
+}
+.search-form
+{
+    background-color: rgb(214, 233, 250);
+    height: 55vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+}
+.input-div
+{
+    width: 100%;
+    margin: 0;
+}
+.input-box
+{
+    
+    width: 80%;
+    margin-left: 2rem;
+}
+.input-div-button
+{
+    display: flex;
+    justify-content: center;
+}
+.btn
+{
+    width: 30%;
+}
+.error-block
+{
+    border: red;
+    color: red;
+    font-size: small;
+    padding: 0;
+    margin:0;
+
+}
+.camp-date
+{
+    margin: 0;
+    padding: 0;
+    display: inline;
+    color: rgb(109, 109, 109);
+    /* text-decoration: underline; */
+}
+.camp-head
+{
+    display: inline;
+    margin-right: .5rem;
+}

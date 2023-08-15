@@ -1,0 +1,104 @@
+.example-form {
+    min-width: 150px;
+    max-width: 500px;
+    width: 100%;
+  }
+  
+  .example-full-width {
+    width: 100%;
+  }
+
+  .container
+  {
+    margin-top:4rem ;
+  }
+.form-group
+{
+    margin-bottom: 15px;
+}
+.content
+{
+    margin: 2% !important;
+    background-color: #fff !important;
+    padding: 3rem 1rem 2rem 1rem !important;
+    box-shadow: 0 0 5px 5px rgba(0,0,0,.05) !important;
+    border-radius: 10px;
+   
+}
+.Timg
+{
+    width: 450px;
+    height: 300px;
+    object-fit: cover;
+}
+
+.signin-text
+{
+    font-style: normal;
+    font-weight: 600;
+    color: rebeccapurple;;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+.form-control
+{
+    display: block !important;
+    width: 100% !important;
+    font-size: 1rem !important;
+    font-weight: 400 !important;
+    line-height: 1.5 !important;
+    border-color: #00ac96 !important;
+    border-style: solid !important;
+    border-width: 0 0 1px 0 !important;
+    padding: 0px !important;
+    color: #495057 !important;
+    height: auto !important;
+    border-radius: 0 !important;
+    background-color: #fff !important;
+    background-clip: padding-box !important;
+  
+}
+
+
+.form-control:focus
+{
+    color:#495057 !important;
+    background-color: #fff !important;
+    /* border-color: #00ac96 !important; */
+    outline: 0 !important;
+    box-shadow: none !important;
+
+
+}
+.btn-class
+{
+    margin-top: 15px;
+    border-color:rebeccapurple;;
+    color:rebeccapurple;
+    margin-bottom: .8rem;
+}
+.btn-class:hover{
+    background-color :rebeccapurple;;
+}
+.homeLink
+{
+    text-decoration: none;
+    color: rebeccapurple;
+    /* padding-left: 22rem; */
+}
+
+
+.error-block
+{
+    border: red;
+    color: red;
+    font-size: small;
+    padding: 0;
+    margin:0;
+}
+
+.lbl
+{
+    display: flex;
+    justify-content: space-between;
+}

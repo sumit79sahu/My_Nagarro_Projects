@@ -1,0 +1,57 @@
+.main
+{
+    height: 100vh;
+}
+
+
+.body
+{
+    height: 79vh;
+    margin-top: 2rem;
+    /* border: 1px solid red; */
+}
+.manage
+{
+    cursor: pointer;
+}
+.btn
+{
+    margin: .5rem;
+}
+.error-block
+{
+    border: red;
+    color: red;
+    font-size: small;
+    padding: 0;
+    margin:0;
+
+}
+.bill-details
+{
+    color:rgb(109, 109, 109) ;
+}
+.bill
+{
+    display: flex;
+    justify-content: space-around;
+
+}
+.bill-btn
+{
+    display: flex;
+    justify-content: flex-start;
+}
+.invalid
+{
+    color: red;
+    margin: 1rem;
+}
+
+.logout
+{
+    color: white;
+    text-decoration: none;
+    margin-right: .5rem;
+    cursor: pointer;
+}

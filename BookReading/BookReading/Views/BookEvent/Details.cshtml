@@ -1,0 +1,124 @@
+﻿@model BookReading.Models.BookEventModel
+@inject BookReading.Repository.ICommentRepository comments
+@inject Microsoft.AspNetCore.Identity.SignInManager<ApplicationUser> _signInManager
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+
+<h1>
+    @Html.DisplayFor(model => model.Title)
+</h1>
+
+
+<div>
+    <h4>Details</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Email)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Email)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Date)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Date)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Location)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Location)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.StartTime)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.StartTime)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Type)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Type)
+        </dd>
+        @if (Model.Duration != null)
+        {
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.Duration)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.Duration)
+            </dd>
+        }
+
+        @if (Model.Description != null)
+        {
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.Description)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.Description)
+            </dd>
+        }
+
+        @if (Model.OtherDetails != null)
+        {
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.OtherDetails)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.OtherDetails)
+            </dd>
+
+        }
+
+        @if (Model.InviteByEmail != null)
+        {
+            <dt class="col-sm-2">
+                Total Invited to event
+            </dt>
+            <dd class="col-sm-10">
+                @{
+                    int count = 0;
+                    string[] emailList = Model.InviteByEmail.Split(",");
+                    foreach (var item in emailList)
+                    {
+                        count++;
+                    }
+                }
+                @count
+            </dd>
+        }
+
+    </dl>
+
+    <h4>Comments</h4>
+    <hr />
+    <partial name="_Comments">
+   <dl>
+
+        @foreach (var item1 in await comments.ShowCommentAsync())
+        {
+            if (Model.Title == item1.Title)
+            {
+                <dt>
+                    @item1.Name
+                </dt>
+                <dd>
+                    @item1.Comment
+                </dd>
+            }
+
+        }
+    </dl>
+
+
+</div>
+<div>
+    <a asp-controller="Home" asp-action="Index">Back to Home</a>
+</div>

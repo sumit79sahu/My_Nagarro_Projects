@@ -1,0 +1,54 @@
+<div class="container">
+    <div class="row content">
+        <div class="col-md-6 mb-3">
+            <img src="../../../assets/images/img7.jpg"
+                class="img-fluid Timg" alt="Phone image">
+        </div>
+        <div class="col-md-6">
+            <h3 class="signin-text mb">
+              Admin Login
+            </h3>
+            <form  [formGroup]="adminForm" (ngSubmit)="OnSubmit()">
+                <div class="form-group">
+                    <div class="lbl">
+                        <label for="email">Email</label>
+                        <span *ngIf="validationEmail && (validationEmail.invalid && validationEmail.touched)" class="error-block">
+                            Please enter a valid email
+                        </span>
+                          <span *ngIf="validationEmail && (submit && validationEmail.untouched)" class="error-block">
+                            this field required
+                          </span>
+
+                      </div>
+               
+                    <input type="email" name="email" class="form-control input1" formControlName="admin_Email" matInput>
+
+
+                   
+                </div>
+                <div class="form-group">
+                    <div class="lbl">
+                        <label for="password">Password</label>
+                        <span *ngIf="validationPassword && (validationPassword.invalid && validationPassword.touched)" class="error-block">
+                            Please enter a valid Password
+                        </span>
+                          <span *ngIf="validationPassword && (submit && validationPassword.untouched)" class="error-block">
+                            this field required
+                          </span>
+                    </div>
+
+                    <input type="password" name="password" class="form-control input1" formControlName="admin_Password" autocomplete="on">
+ 
+
+                </div>
+                <div class="form-group form-check">
+                    <input type="checkbox" name="checkbox" class="form-check-input" >
+                    <label for=" checkbox" class="form-check-label">Remember Me</label>
+                </div>
+                    <button class="btn btn-class">Login</button>
+            </form>
+            <a routerLink='' class="homeLink">Back to dashboard</a>
+        </div>
+    </div>
+</div>
+

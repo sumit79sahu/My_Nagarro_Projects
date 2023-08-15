@@ -1,0 +1,59 @@
+.add-form
+{
+    /* border: 1px solid red; */
+    height: 91vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+.form-cntr
+{
+    border: 1px solid silver;
+    border-radius: 10px;
+    height: 75vh;
+    width: 90%;
+    display: flex;
+    flex-direction: column;
+    /* justify-content: center; */
+    align-items: center;
+    background-color: rgb(226, 230, 238);
+}
+.back-btn
+{
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+    padding: .5rem;
+}
+
+.form
+{
+    width: 60%;
+    height: 65vh;
+}
+.submit
+{
+margin-right: .25rem;
+}
+.cancel
+{
+    margin-left: .25rem;
+}
+.error
+{
+    padding: 0;
+    margin: 0;
+    font-size: small;
+    color: red;
+}
+
+.label-box
+{
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+

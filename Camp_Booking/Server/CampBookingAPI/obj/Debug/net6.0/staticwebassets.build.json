@@ -1,0 +1,11 @@
+{
+  "Version": 1,
+  "Hash": "Y/yBiHGNeiYqMkJRnd8b3GmhG0td9vpiqnRPy3JNpCE=",
+  "Source": "CampBookingAPI",
+  "BasePath": "_content/CampBookingAPI",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [],
+  "Assets": []
+}

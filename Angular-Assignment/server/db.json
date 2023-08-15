@@ -1,0 +1,23 @@
+{
+  "records": [
+    {
+      "name": "sumit",
+      "dob": "2001-08-15",
+      "score": "90",
+      "id": "1"
+    },
+    {
+      "name": "sweety",
+      "dob": "2001-08-10",
+      "score": "82",
+      "id": "2"
+    }
+  ],
+  "teachers": [
+    {
+      "email": "sumit.sahu@nagarro.com",
+      "name": "sumit",
+      "password": "Sumit@123"
+    }
+  ]
+}

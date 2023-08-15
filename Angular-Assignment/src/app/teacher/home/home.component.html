@@ -1,0 +1,128 @@
+<div class="container">
+    <!------------------------------------------------------------------ Show ----------------------------------------->
+    <ng-template [ngIf]="add==false">
+        <div class="row content">
+
+            <button class="btn btn-class add-btn" (click)="Add()">Add New Result</button>
+            <div class="show-container">
+                <h5 class="text ">Total {{count}} students</h5>
+                <table class="table  stable">
+                    <thead>
+                        <tr>
+                            <th scope="col" class="head">Roll No</th>
+                            <th scope="col" class="head">Name</th>
+                            <th scope="col" class="head">Date of Birth</th>
+                            <th scope="col" class="head">Score</th>
+                            <th scope="col" class="head">Action</th>
+                        </tr>
+                    </thead>
+                    <tbody Id="student">
+                        <tr *ngFor="let item of records">
+                            <ng-template [ngIf]="edit==false">
+                                <td class="c1">{{item.id}}</td>
+                                <td class="c1">{{item.name}}</td>
+                                <td class="c1">{{item.dob}}</td>
+                                <td class="c1">{{item.score}}</td>
+                                <td class="c1"> <button class="btn btn-class" (click)="Edit(item.id)"><i class="bi bi-pencil-square"></i></button>
+                                    <button class="btn btn-class" (click)="Delete(item.id)"><i class="bi bi-trash3-fill"></i></button></td>
+                            </ng-template>
+                            <ng-template [ngIf]="edit==true">
+                                <ng-template *ngIf="item.id==Id; then Ifblock else Elseblock"></ng-template>
+                                    <ng-template #Ifblock>
+                                        <td class="c2"> <input type="text" [value]="item.id" class="ipt" disabled ></td>
+                                        <td class="c2"><input type="text" [value]="item.name" class="ipt" #name ></td>
+                                        <td class="c2"><input type="date" [value]="item.dob" class="ipt" #dob></td>
+                                        <td class="c2"><input type="text" [value]="item.score" class="ipt" #score ></td>
+                                        <td class="c2"> <button class="btn btn-class" (click)="Save(name.value,dob.value,score.value)"><i class="bi bi-save"></i></button> <button
+                                                class="btn btn-class" (click)="Edit(item.id)"><i class="bi bi-x-square-fill"></i></button></td>
+                                    </ng-template>
+                                    <ng-template #Elseblock>
+                                      
+                                            <td class="c2">{{item.id}}</td>
+                                            <td class="c2">{{item.name}}</td>
+                                            <td class="c2">{{item.dob}}</td>
+                                            <td class="c2">{{item.score}}</td>
+                                            <td class="c2"> <button class="btn btn-class"
+                                                    disabled><i class="bi bi-save"></i> </button><button class="btn btn-class"
+                                                   disabled ><i class="bi bi-x-square-fill"></i></button></td>
+                                    </ng-template>
+                            </ng-template>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+        </div>
+
+    </ng-template>
+    <!---------------------------------------------------------------- Add---------------------------------->
+    <ng-template [ngIf]="add==true">
+        <div class="row content add-container">
+            <button class="btn btn-class back-btn" (click)="Add()">Back</button>
+            <h3 class="add-text text-center">Add a new Record</h3>
+            <div class="add-container">
+                <form class="example-form add-form" [formGroup]="recordForm" (ngSubmit)="OnSubmit()">
+
+                    <mat-form-field class="example-full-width">
+                        <mat-label>Roll No</mat-label>
+                        <input type="text" matInput formControlName="id">
+                        <mat-error *ngIf="validateId && (validateId.invalid && validateId.touched)">
+                            Please enter a valid roll no
+                          </mat-error>
+                          <mat-error *ngIf="validateId && (validateId.invalid && validateId.untouched)">
+                            this field required
+                          </mat-error>
+                    </mat-form-field>
+
+                    <mat-form-field class="example-full-width ipt1">
+                        <mat-label>Name</mat-label>
+                        <input type="text" matInput formControlName="name">
+                        <mat-error *ngIf="validateName && (validateName.invalid && validateName.touched)">
+                            Please enter a valid name
+                          </mat-error>
+
+                          <mat-error *ngIf="validateName && (validateName.invalid && validateName.untouched)">
+                            this field required
+                          </mat-error>
+
+                    </mat-form-field>
+
+                    <mat-form-field class="example-full-width ipt1">
+                        <mat-label>Date of Birth</mat-label>
+                        <input type="date" matInput formControlName="dob">
+
+                        <mat-error *ngIf="validateDate && (validateDate.invalid && validateDate.touched)">
+                            Please enter a valid Date
+                          </mat-error>
+
+                          <mat-error *ngIf="validateDate && (validateDate.invalid && validateDate.untouched)">
+                            this field required
+                          </mat-error>
+
+
+
+                    </mat-form-field>
+                    <mat-form-field class="example-full-width ipt1">
+                        <mat-label>Score</mat-label>
+                        <input type="text" matInput formControlName="score">
+
+                        <mat-error *ngIf="validateScore && (validateScore.invalid && validateScore.touched)">
+                            Please enter a valid score
+                          </mat-error>
+
+                          <mat-error *ngIf="validateScore && (validateScore.invalid && validateScore.untouched)">
+                            this field required
+                          </mat-error>
+
+                    </mat-form-field>
+
+
+                    <div class="d-flex ">
+                        <button class="btn btn-primary sub">Submit</button>
+                        <button type="reset" class="btn btn-primary clr">Clear</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </ng-template>
+</div>

@@ -1,0 +1,74 @@
+<div class="container">
+    <ng-template [ngIf]="search==false">
+        <div class="row content">
+
+            <h3 class="text text-center">Find Result</h3>
+            <div class="add-container">
+                <form class="example-form add-form" [formGroup]="searchForm" (ngSubmit)="OnSubmit()">
+                    <mat-form-field class="example-full-width">
+                        <mat-label>Roll No</mat-label>
+                        <input type="text" matInput formControlName="id">
+                        <mat-error *ngIf="validateId && (validateId.invalid && validateId.touched)">
+                            Please enter a valid roll no
+                          </mat-error>
+                          <mat-error *ngIf="validateId && (validateId.invalid && validateId.untouched)">
+                            this field required
+                          </mat-error>
+
+                    </mat-form-field>
+                    <mat-form-field class="example-full-width ipt1">
+                        <mat-label>Name</mat-label>
+                        <input type="text" matInput formControlName="name" >
+                        <mat-error *ngIf="validateName && (validateName.invalid && validateName.touched)">
+                            Please enter a valid name
+                          </mat-error>
+
+                          <mat-error *ngIf="validateName && (validateName.invalid && validateName.untouched)">
+                            this field required
+                          </mat-error>
+                    </mat-form-field>
+                    <div class="d-flex ">
+                        <button class="btn btn-primary sub">Search</button>
+                        <button type="reset" class="btn btn-primary clr">Clear</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+    </ng-template>
+    <ng-template [ngIf]="search==true">
+        <div class="row content">
+            <button class="btn btn-primary back" (click)="Search()">Back</button>
+            <h3 class="text text-center">Result</h3>
+
+            <table class="table score-container" >
+                <tbody>
+                  <tr>
+                    <td class="score-text">Roll No :</td>
+                    <td class="score-text">{{result.id}}</td>              
+                  </tr>
+                  <tr>
+                    <td class="score-text">Name :</td>
+                    <td class="score-text">{{result.name}}</td>        
+                  </tr>
+
+                  <tr>
+                    <td class="score-text">Date of Birth :</td>
+                    <td class="score-text">{{result.dob}}</td>
+                  </tr>
+
+                  <tr>
+                    <td class="score-text">Score :</td>
+                    <td class="score-text">{{result.score}}</td>
+                  </tr>
+                </tbody>
+              </table>
+             
+
+        </div>
+
+    </ng-template>
+
+
+
+</div>
