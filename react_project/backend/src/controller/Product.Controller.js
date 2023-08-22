@@ -31,7 +31,23 @@ const getProductById=
         }
     }
 }
+const getProductByCategory=
+{
+    path:'/api/product/category/:id',
+    method:'get',
+    handler:async(req,res)=>
+    {
+        try {
+            // console.log(req.params.id)
+            const result= await product.findAll({where:{categoryId:req.params.id}});
+            console.log(result)
+            res.json(result)  ;
+        } catch (error) {
+            console.log(error)
+             res.sendStatus(404);
+        }
+    }
+}
 
 
-
-module.exports={getProducts,getProductById}
+module.exports={getProducts,getProductById,getProductByCategory}

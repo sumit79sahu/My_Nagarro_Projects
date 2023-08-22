@@ -1,0 +1,44 @@
+.Hcard
+{
+    display: flex;
+    gap:30px;
+}
+.cart-product-img
+{
+    width: 20%;
+    height: 150px;
+    object-fit: contain;
+}
+
+
+.btn-box
+{
+    display: flex;
+    align-items: center;
+    gap: 20px;
+ 
+}
+
+.btn-box div
+{
+    display: flex;
+    gap: 5px;
+}
+.btn-box div span
+{
+    border: 1px solid rgb(194, 193, 193);
+    font-size: 16px;
+    padding: 0 8px !important;
+}
+.btn-box div button
+{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 20px; 
+    background-color: #fff;
+    width: 25px;
+    height: 25px;
+    border: 1px solid rgb(194, 193, 193);
+    border-radius: 100px;
+}

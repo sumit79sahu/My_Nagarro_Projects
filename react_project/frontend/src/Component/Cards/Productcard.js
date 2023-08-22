@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import '../../Assets/styles/Components/Vcard.css'
+import '../../Assets/styles/Components/Productcard.css'
 import Card from 'react-bootstrap/Card';
 import { Link } from "react-router-dom";
 import StarIcon from '@mui/icons-material/Star';
@@ -29,9 +29,9 @@ export default function Vcard({ data }) {
   }
   const adjustPrice =(price)=>
   {
-    if(price>=1 && price<250) discount(price*30,5)
-    else if(price>=250 && price<500) discount(price*20,10)
-    else  discount(price*10 ,15)
+    if(price>=1 && price<250) discount(price,5)
+    else if(price>=250 && price<500) discount(price,10)
+    else  discount(price ,15)
   }
   useEffect(()=>
   {

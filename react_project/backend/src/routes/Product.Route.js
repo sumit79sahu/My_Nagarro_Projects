@@ -1,5 +1,5 @@
-const {getProducts,getProductById}=require('../controller/Product.Controller')
+const {getProducts,getProductById,getProductByCategory}=require('../controller/Product.Controller')
 
-const productRoutes=[getProducts,getProductById]
+const productRoutes=[getProducts,getProductById,getProductByCategory]
 
 module.exports=productRoutes;

@@ -1,7 +1,32 @@
+.cart-product-price
+{
+    display: flex;
+    padding: 50px 6.25rem ;
+    gap: 20px;
+}
 .cart-container
 {
-    padding: 20px;
+    width: 70%;
     display: grid;
     grid-template-columns: repeat(1, 1fr);
     gap: 20px;
+    height: 100%;
+
+}
+.price-details
+{
+    border-radius: 6px;
+    position: sticky;
+    top: 100px;
+    width: 30%;
+    height:100%;
+    padding: 1rem;
+
+}
+
+
+.price-details div
+{
+    display: flex;
+    justify-content: space-between;
 }
