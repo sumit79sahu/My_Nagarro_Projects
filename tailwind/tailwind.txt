@@ -1,0 +1,87 @@
+bg-slate-900:background color in slate
+
+grid
+    -> place-content-center
+
+h-screen: 100vh
+
+p-6:padding
+
+max-w-sm: max width=24rem
+
+bg-white:background color white
+
+mx-auto: margin left and right =auto
+
+rounded-xl:border-radius
+
+shadow-lg:large shadow 
+
+flex:display flex
+   -> item-center: align-items:center
+   ->flex-row: flex-direction:row
+
+
+
+space-x-4: margin left and right
+
+h-12: height  3rem
+
+w-12 :width  3rem
+
+text-2xl: font-size: 1.5rem , line-height: 2rem
+
+font-medium: font-weight:500
+
+text-black:text color black
+
+text-slate-500:  text color in slate
+
+text-base:  font-size: 1rem , line-height: 1.5rem
+
+bg-sky-400: background color sky
+
+text-center: text center
+
+mt: margin top
+
+text-white: text color white
+
+hover:  bg-white:hover effect
+
+dark: bg-red-600: when dark mode in on
+
+my-4: margin top and bottom 
+
+
+tailwindcss follows mobile first approach 
+
+md:text-green-600 :  when screen size in medium
+
+sm:text-red-600 : when screen size small
+
+overflow-hidden
+
+w-full:width 100%
+
+h-full: height 100%
+
+object-cover: object-fit
+
+tracking-wide: letter-spacing
+
+font-semibold:font-weight:600
+
+block :display:block
+
+font-medium: font-weight: 500;
+
+p-[2px] :padding 2px
+px-[14px] : padding-left:14px padding-right:14px
+
+
+border-b-2 :border bottom 2px
+
+hidden: display none
+
+
